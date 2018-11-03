@@ -19,8 +19,38 @@ document.ready(function() {
     // GLOBAL VARIABLES
         // timer -- starts at 15 seconds
         // questionCount -- starts at 0
+    var timeDown = 15;
+    var questionCount = 0;
+    var clockRunning = false;
+    var intervalId;
 
     // timer function
+    function timeDisplay() {
+        if (!clockRunning) {
+            intervalId = setInterval(stopwatch.count, 1000);
+            clockRunning = true;
+            timeDown--;
+            var converted = timeConverter(time);
+            $("#timerDisplay").text(converted);
+        }
+    }
+
+    // time maths from previous activity
+    var minutes = Math.floor(t / 60);
+    var seconds = t - (minutes * 60);
+    if (seconds < 10) {
+        seconds = "0" + seconds;
+    }    if (minutes === 0) {
+        minutes = "00";
+    }
+    else if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+    return minutes + ":" + seconds;
+    }
+
+
+
         // display a countown of time
         // if time = 0 then run nextQuestion function
     
@@ -35,6 +65,9 @@ document.ready(function() {
     // onclickevent
         // when finalize answer button is clicked
             // run nextQuestion
+    // function timeConverter(t) {
+
+
 
     
 
