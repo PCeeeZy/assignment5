@@ -144,7 +144,7 @@ $(document).ready(function() {
         if (timeDown === 0) {
             $(".questionArea").append(`<p><h2>You ran out of time!</h2></p><p><h3>The correct answer was ${questions[questionCount].trueAnswer}</h3></p>`);
             // TO DO---TIMEOUT GIF
-            $(".answersArea").html("TIMEOUT GIF");
+            $(".answersArea").html("<img src='./assets/images/timeout.gif' alt='Timeout'/>");
             // FUNCTION TO DELAY BEGINNING of NEXT QUESTION
             resultDelay();
         }
@@ -152,14 +152,14 @@ $(document).ready(function() {
             $(".questionArea").append(`<p><h2>You answered ${userGuess}!</h2></p><p><h3>The correct answer was ${questions[questionCount].trueAnswer}</h3></p>
             <p><h3>Great job!</h3></p>`);
             // TO DO---RIGHT ANSWER GIF
-            $(".answersArea").html("RIGHT ANSWER GIF");
+            $(".answersArea").html("<img src='./assets/images/partyhard.gif' alt='Correct'/>");
             resultDelay();
         }
         else {
             $(".questionArea").append(`<p><h2>You answered ${userGuess}</h2></p><p><h3>The correct answer was ${questions[questionCount].trueAnswer}</h3></p>
             <p><h3>Better luck next question!</h3></p>`);
             // TO DO---WRONG ANSWER GIF
-            $(".answersArea").html("WRONG ANSWER GIF");
+            $(".answersArea").html("<img src='./assets/images/wrong.gif' alt='Wrong'/>");
             resultDelay();
         };
     };
