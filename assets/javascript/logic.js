@@ -31,7 +31,6 @@ $(document).ready(function() {
     var questionCount = 0;
     // until we begin each question, clockRunning is false
     var clockRunning = false;
-
     var intervalId;
     var rightScore = 0;
     var wrongScore = 0;
@@ -109,6 +108,7 @@ $(document).ready(function() {
     function onGuess() {
         // can use this because this is only run on a button click. so this refers to the button clicked
         userGuess = $(this).val();
+        console.log(userGuess);
         stopTimer();
         if (userGuess === questions[questionCount].trueAnswer) {
             userRight = true;
