@@ -37,7 +37,7 @@ $(document).ready(function() {
     var unanswered = 0;
     var userGuess = "";
     var userRight = true;
-
+    var timeO;
 
 
 // **************FUNCTIONS*********************************
@@ -88,7 +88,7 @@ $(document).ready(function() {
             // then put every button in the answersArea class
             var answersButton = $("<button>");
             answersButton.text(questions[questionCount].answers[i]);
-            answersButton.attr("value", questions[questionCount].answers[i]);
+            // answersButton.attr("value", questions[questionCount].answers[i]);
             answersButton.attr("class", "answerButton");
             $(".answersArea").append(answersButton);
         }
@@ -104,10 +104,11 @@ $(document).ready(function() {
         // increment wrong score
         // set userRight to false for result
 // result is run to have a celebration/defeat screen
-
+//
     function onGuess() {
         // can use this because this is only run on a button click. so this refers to the button clicked
-        userGuess = $(this).val();
+        userGuess = $(this).text();
+        console.log($(this).text())
         console.log(userGuess);
         stopTimer();
         if (userGuess === questions[questionCount].trueAnswer) {
@@ -169,10 +170,12 @@ $(document).ready(function() {
         // if questionCount=last question
             // then run gameOver
         if (questionCount === questions.length) {
-            setTimeout(gameOver, 5000);
+            clearTimeout(timeO);
+           timeO = setTimeout(gameOver, 5000);
         }
         else {
-            setTimeout(nextQuestion, 5000);
+            clearTimeout(timeO);
+            timeO = setTimeout(nextQuestion, 5000);
         };
         // else run nextQuestion()
     };
@@ -219,7 +222,13 @@ $(document).ready(function() {
         $("#goAgaane").hide();
     });
     // when we click .answerButton run onGuess()
-    $(".answerButton").on("click", onGuess());
+    $(".answerButton").on("click", function(){
+        userGuess = $(this).text();
+        console.log($(this).text())
+        console.log(userGuess);
+        onGuess();
+    });
+
     
 // **************PAGE LOAD******************
     $("#goAgaane").hide();
