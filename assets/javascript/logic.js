@@ -107,13 +107,13 @@ $(document).ready(function() {
 //
     function onGuess() {
         // can use this because this is only run on a button click. so this refers to the button clicked
-        userGuess = $(this).text();
-        console.log($(this).text())
-        console.log(userGuess);
+        // userGuess = $(this).text();
+        // console.log($(this).text());
+        // console.log(userGuess);
         stopTimer();
         if (userGuess === questions[questionCount].trueAnswer) {
             userRight = true;
-            rightScore++
+            rightScore++;
             result();
         }
         else {
@@ -145,7 +145,7 @@ $(document).ready(function() {
             $(".questionArea").append(`<p><h2>You ran out of time!</h2></p><p><h3>The correct answer was ${questions[questionCount].trueAnswer}</h3></p>`);
             // TO DO---TIMEOUT GIF
             $(".answersArea").html("TIMEOUT GIF");
-            // TO DO----CREATE A FUNCTION TO DELAY BEGINNING of NEXT QUESTION
+            // FUNCTION TO DELAY BEGINNING of NEXT QUESTION
             resultDelay();
         }
         else if (userRight === true) {
@@ -222,13 +222,26 @@ $(document).ready(function() {
         $("#goAgaane").hide();
     });
     // when we click .answerButton run onGuess()
-    $(".answerButton").on("click", function(){
+    // $(".answerButton").on("click", function(e){
+    //     console.log(e);
+    //     userGuess = $(this).text();
+    //     console.log($(this).text())
+    //     console.log(userGuess);
+    //     onGuess();
+    // });
+
+    $(document).on("click", ".answerButton", function(){
         userGuess = $(this).text();
         console.log($(this).text())
         console.log(userGuess);
         onGuess();
     });
+    
+        // $(document).on("click", ".movie", function alertMovieName(){
 
+        //     Code here
+            
+        //     });
     
 // **************PAGE LOAD******************
     $("#goAgaane").hide();
